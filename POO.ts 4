@@ -1,0 +1,23 @@
+abstract class Forma {
+    abstract calcularArea(): number;
+}
+
+class Retangulo extends Forma {
+    constructor(private largura: number, private altura: number) {
+        super();
+    }
+
+    calcularArea(): number {
+        return this.largura * this.altura;
+    }
+}
+
+class Circulo extends Forma {
+    constructor(private raio: number) {
+        super();
+    }
+
+    calcularArea(): number {
+        return Math.PI * (this.raio ** 2);
+    }
+}
