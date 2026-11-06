@@ -1,0 +1,17 @@
+class Animal {
+    emitirSom(): void {
+        console.log("Som genérico de animal");
+    }
+}
+
+class Cachorro extends Animal {
+    override emitirSom(): void {
+        console.log("Au Au!");
+    }
+}
+
+class Gato extends Animal {
+    override emitirSom(): void {
+        console.log("Miau!");
+    }
+}
