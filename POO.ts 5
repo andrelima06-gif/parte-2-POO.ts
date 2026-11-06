@@ -1,0 +1,47 @@
+interface Autenticavel {
+    autenticar(senha: string): boolean;
+}
+
+abstract class Pessoa implements Autenticavel {
+    protected senhaHash: string;
+
+    constructor(public nome: string, public email: string, senha: string) {
+        this.senhaHash = senha;
+    }
+
+    abstract apresentar(): void;
+
+    public autenticar(senha: string): boolean {
+        return this.senhaHash === senha;
+    }
+}
+
+class Aluno extends Pessoa {
+    constructor(nome: string, email: string, senha: string, public matricula: string) {
+        super(nome, email, senha);
+    }
+
+    override apresentar(): void {
+        console.log(`[Aluno] Olá, meu nome é ${this.nome} e minha matrícula é ${this.matricula}.`);
+    }
+}
+
+class Professor extends Pessoa {
+    constructor(nome: string, email: string, senha: string, public registro: string) {
+        super(nome, email, senha);
+    }
+
+    override apresentar(): void {
+        console.log(`[Professor] Prezados, sou o professor ${this.nome}, registro ${this.registro}.`);
+    }
+}
+
+const pessoas: Pessoa[] = [
+    new Aluno("Carlos", "carlos@email.com", "1234", "A2026"),
+    new Professor("Ana", "ana@email.com", "abcd", "P999")
+];
+
+for (const p of pessoas) {
+    p.apresentar();
+    console.log(`Autenticação válida? ${p.autenticar("1234")}\n`);
+}
