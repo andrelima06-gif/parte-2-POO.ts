@@ -1,0 +1,15 @@
+class Pessoa {
+    constructor(public nome: string) {}
+}
+
+class Aluno extends Pessoa {
+    constructor(nome: string, public matricula: string) {
+        super(nome);
+    }
+}
+
+class Professor extends Pessoa {
+    constructor(nome: string, public disciplina: string) {
+        super(nome);
+    }
+}
